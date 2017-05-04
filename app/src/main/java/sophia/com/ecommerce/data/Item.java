@@ -11,7 +11,7 @@ public class Item {
     private String title;
     private String descr;
     private double price;
-    private int[] photos;
+    private String[] photos;
     private boolean disponibility;
     private int[] rating;
 
@@ -32,7 +32,7 @@ public class Item {
     }
 
 
-    public Item(int id, String title, String descr, double price, int[] photos, boolean disponibility, int[] rating) {
+    public Item(int id, String title, String descr, double price, String[] photos, boolean disponibility, int[] rating) {
         this.id = id;
         this.title = title;
         this.descr = descr;
@@ -74,11 +74,11 @@ public class Item {
         this.price = price;
     }
 
-    public int[] getPhotos() {
+    public String[] getPhotos() {
         return photos;
     }
 
-    public void setPhotos(int[] photos) {
+    public void setPhotos(String[] photos) {
         this.photos = photos;
     }
 
@@ -97,7 +97,9 @@ public class Item {
         this.rating = rating;
     }
 
-
+    public String getPhotoAtIndex(int index) throws ArrayIndexOutOfBoundsException{
+        return photos[index];
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -129,9 +131,6 @@ public class Item {
         result = 31 * result + (disponibility ? 1 : 0);
         result = 31 * result + Arrays.hashCode(rating);
         return result;
-    }
-    public int getPhotoAtIndex(int index) throws ArrayIndexOutOfBoundsException{
-        return photos[index];
     }
 
 }

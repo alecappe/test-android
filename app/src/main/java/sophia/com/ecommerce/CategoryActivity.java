@@ -5,7 +5,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -18,7 +20,7 @@ public class CategoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_category);
 
         listView1 = (ListView)findViewById(R.id.listView1);
-        String[] cols = new String[]{
+        final String[] cols = new String[]{
                 "Elemento 1",
                 "Elemento 2",
                 "Elemento 3",
@@ -40,8 +42,16 @@ public class CategoryActivity extends AppCompatActivity {
         };
 
 
-        ListAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1 , cols);
+        ListAdapter adapter = new ArrayAdapter<String>(this, R.layout.text_view_row , cols);
         listView1.setAdapter(adapter);
+
+        listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("CategoryAcrivity", String.valueOf(position));
+                Log.d("CategoryAcrivity", cols[position]);
+            }
+        });
     }
 
 }

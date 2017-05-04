@@ -1,6 +1,5 @@
 package sophia.com.ecommerce;
 
-import android.content.ClipData;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import sophia.com.ecommerce.data.Item;
 
@@ -46,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
                     if(currentPhotoIndex<0){
                         currentPhotoIndex = item.getPhotos().length - 1;
                     }
-                    imageView.setImageDrawable(getDrawable(item.getPhotoAtIndex(currentPhotoIndex)));
+                    Picasso.with(MainActivity.this).load(item.getPhotoAtIndex(currentPhotoIndex)).into(imageView);
+//                  imageView.setImageDrawable(getDrawable(item.getPhotoAtIndex(currentPhotoIndex)));
                 }catch (ArrayIndexOutOfBoundsException e){
                     Log.d("MainActivity", "Errore immagine non trovata");
                 }
@@ -65,7 +67,8 @@ public class MainActivity extends AppCompatActivity {
                     if(currentPhotoIndex==item.getPhotos().length){
                         currentPhotoIndex = 0;
                     }
-                    imageView.setImageDrawable(getDrawable(item.getPhotoAtIndex(currentPhotoIndex)));
+                    Picasso.with(MainActivity.this).load(item.getPhotoAtIndex(currentPhotoIndex)).into(imageView);
+                    //imageView.setImageDrawable(getDrawable(item.getPhotoAtIndex(currentPhotoIndex)));
                 }catch (ArrayIndexOutOfBoundsException e){
                     Log.d("MainActivity", "Errore immagine non trovata");
                 }
@@ -77,7 +80,14 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        int[] photos = new int[]{R.drawable.android1, R.drawable.item};
+        String[] photos = new String[]{
+                "http://lorempixel.com/400/400/abstract/1",
+                "http://lorempixel.com/400/400/abstract/2",
+                "http://lorempixel.com/400/400/abstract/3",
+                "http://lorempixel.com/400/400/abstract/4",
+                "http://lorempixel.com/400/400/abstract/5",
+                "http://lorempixel.com/400/400/abstract/6"
+        };
         int[] rating = new int[]{1,2,3,4,5};
         String lorem = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, ";
 
@@ -96,4 +106,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
 }
