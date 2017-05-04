@@ -1,5 +1,6 @@
 package sophia.com.ecommerce;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -15,6 +16,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import sophia.com.ecommerce.adapter.CategoriesAdapter;
 import sophia.com.ecommerce.data.CategoryModel;
 
 public class CategoryActivity extends AppCompatActivity {
@@ -26,20 +28,27 @@ public class CategoryActivity extends AppCompatActivity {
 
         listView1 = (ListView)findViewById(R.id.listView1);
 
-        List<CategoryModel> categoryModelList = new ArrayList<>();
+        final List<CategoryModel> categoryModelList = new ArrayList<>();
 
         for (int i = 0; i < 20; i++){
-            categoryModelList.add(new CategoryModel(i, "title" + i, "descr" + i));
+            categoryModelList.add(new CategoryModel(i, "Category " + i, "description " + i));
         }
 
 
-        ListAdapter adapter = new ArrayAdapter<String>(this, R.layout.text_view_row);
-        listView1.setAdapter(adapter);
+
+
+        CategoriesAdapter categoriesAdapter = new CategoriesAdapter(this, categoryModelList);
+
+        listView1.setAdapter(categoriesAdapter);
 
         listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d("CategoryAcrivity", String.valueOf(position));
+                Intent i = new Intent(CategoryActivity.this, ProductsActivity.class);
+
+                i.putExtra("id", categoryModelList.get(position).getID());
+                i.putExtra("title", categoryModelList.get(position).getTitle());
+                startActivity(i);
             }
         });
     }

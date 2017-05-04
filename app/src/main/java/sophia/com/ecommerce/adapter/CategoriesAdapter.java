@@ -55,7 +55,7 @@ public class CategoriesAdapter extends BaseAdapter {
                     ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = lInf.inflate(R.layout.text_view_row, null);
 
-            TextView nameView = (TextView) v.findViewById(R.id.name);
+            TextView nameView = (TextView) v.findViewById(R.id.title);
             TextView descrView = (TextView) v.findViewById(R.id.descr);
 
             th = new TextHolder();

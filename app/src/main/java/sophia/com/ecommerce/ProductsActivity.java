@@ -13,6 +13,12 @@ public class ProductsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products);
 
+        Bundle b = getIntent().getExtras();
+
+        String title = b.getString("title", "");
+
+        setTitle(title);
+
         gridView = (GridView)findViewById(R.id.gridView);
     }
 }
