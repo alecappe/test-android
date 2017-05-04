@@ -1,9 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:textColor="@color/textViewRowColor"
-    android:gravity="center"
+    android:orientation="vertical"
     android:padding="10dp">
 
-</TextView>
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Titolo"
+        android:textColor="@color/colorTextPrimary"
+        android:textSize="16dp">
+
+    </TextView>
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/descr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:text="Descrizione"
+        android:textColor="@color/colorTextSecondary"
+        android:textSize="12dp">
+
+    </TextView>
+</LinearLayout>

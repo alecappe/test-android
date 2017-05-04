@@ -12,6 +12,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import sophia.com.ecommerce.data.CategoryModel;
+
 public class CategoryActivity extends AppCompatActivity {
     private ListView listView1;
     @Override
@@ -20,36 +25,21 @@ public class CategoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_category);
 
         listView1 = (ListView)findViewById(R.id.listView1);
-        final String[] cols = new String[]{
-                "Elemento 1",
-                "Elemento 2",
-                "Elemento 3",
-                "Elemento 4",
-                "Elemento 5",
-                "Elemento 6",
-                "Elemento 7",
-                "Elemento 8",
-                "Elemento 9",
-                "Elemento 10",
-                "Elemento 11",
-                "Elemento 12",
-                "Elemento 13",
-                "Elemento 14",
-                "Elemento 15",
-                "Elemento 16",
-                "Elemento 17",
-                "Elemento 18"
-        };
+
+        List<CategoryModel> categoryModelList = new ArrayList<>();
+
+        for (int i = 0; i < 20; i++){
+            categoryModelList.add(new CategoryModel(i, "title" + i, "descr" + i));
+        }
 
 
-        ListAdapter adapter = new ArrayAdapter<String>(this, R.layout.text_view_row , cols);
+        ListAdapter adapter = new ArrayAdapter<String>(this, R.layout.text_view_row);
         listView1.setAdapter(adapter);
 
         listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.d("CategoryAcrivity", String.valueOf(position));
-                Log.d("CategoryAcrivity", cols[position]);
             }
         });
     }
